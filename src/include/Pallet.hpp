@@ -1,13 +1,14 @@
 #pragma once
 
 #include <string>
+#include "IContainer.hpp"
 
-class Pallet {
+class Pallet : public IContainer{
 
 private:
-	int itemCount;
 	std::string itemName;
 	int itemCapacity;
+	int itemCount;
 
 public:
 	int getItemCount();
@@ -20,9 +21,9 @@ public:
 
 	Pallet(std::string itemName, int itemCapacity, int itemCount);
 
+	bool isEmpty() override;
+	bool isFull() override;
 	bool reallocateEmptyPallet(std::string itemName, int itemCapacity);
-
 	bool takeOne();
-
 	bool putOne();
 };

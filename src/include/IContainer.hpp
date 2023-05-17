@@ -4,7 +4,7 @@ class IContainer {
 
 
 public:
-	bool virtual_isEmpty();
+	virtual bool isEmpty() = 0;
 
-	bool virtual_isFull();
+	virtual bool isFull() = 0;
 };

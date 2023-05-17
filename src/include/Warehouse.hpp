@@ -8,7 +8,7 @@ class Warehouse {
 
 public:
 
-	std::vector<Employee> Employees;
+	std::vector<Employee> employees;
 	std::vector<Shelf> shelves;
 	
 	Warehouse();

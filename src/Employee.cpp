@@ -20,7 +20,8 @@ void Employee::setForkliftCertificate(bool forkliftCertificate) {
 	this->forkliftCertificate = forkliftCertificate;
 }
 
-Employee::Employee(std::string name, bool forkliftCertificate) {
-	// TODO - implement Employee::Employee
-	throw "Not yet implemented";
+Employee::Employee(std::string name, bool forkliftCertificate) :
+name(name),
+forkliftCertificate(forkliftCertificate)
+{
 }
