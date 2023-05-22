@@ -25,25 +25,35 @@ Pallet::Pallet(std::string itemName, int itemCapacity, int itemCount) :
 {}
 
 bool Pallet::reallocateEmptyPallet(std::string itemName, int itemCapacity) {
-	// TODO - implement Pallet::reallocateEmptyPallet
-	throw "Not yet implemented";
+	if(!isEmpty()){
+		return false;
+	}
+	this->itemName = itemName;
+	this->itemCapacity = itemCapacity;
+	return true;
 }
 
 bool Pallet::takeOne() {
-	// TODO - implement Pallet::takeOne
-	throw "Not yet implemented";
+	if(isEmpty()){
+		return false;
+	}
+	itemCount -= 1;
+	return true;
 }
 
 bool Pallet::putOne() {
-	// TODO - implement Pallet::putOne
-	throw "Not yet implemented";
+	if(isFull()){
+		return false;
+	}
+	itemCount += 1;
+	return true;
 }
 
 
 bool Pallet::isEmpty(){
-	throw "Not yet implemented";
+	return !(itemCount > 0);
 }
 
 bool Pallet::isFull(){
-	throw "Not yet implemented";
+	return itemCount == itemCapacity;
 }

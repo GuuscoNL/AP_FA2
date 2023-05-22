@@ -13,7 +13,7 @@ bool Shelf::swapPallet(int slot, int slot2) {
 
 bool Shelf::isEmpty(){
 	for (auto pallet : pallets){
-		if (pallet.getItemCount() > 0){
+		if(!pallet.isEmpty()){
 			return false;
 		}
 	}
@@ -22,7 +22,7 @@ bool Shelf::isEmpty(){
 
 bool Shelf::isFull(){
 	for (auto pallet : pallets){
-			if (pallet.getItemCount() != pallet.getItemCapacity()){
+			if (!pallet.isFull()){
 				return false;
 			}
 		}
