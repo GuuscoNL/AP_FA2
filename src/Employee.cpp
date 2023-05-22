@@ -21,7 +21,9 @@ void Employee::setForkliftCertificate(bool forkliftCertificate) {
 }
 
 Employee::Employee(std::string name, bool forkliftCertificate) :
-name(name),
-forkliftCertificate(forkliftCertificate)
+	name(name),
+	busy(false),
+	forkliftCertificate(forkliftCertificate)
+	
 {
 }
