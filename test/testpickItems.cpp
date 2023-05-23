@@ -3,6 +3,22 @@
 #include "../src/include/Warehouse.hpp"
 #include <iostream>
 
+///////////////////////////////////////////////////////////////
+//                                                           //
+//              Warehouse::pickItems unittests               //
+//                                                           //
+///////////////////////////////////////////////////////////////
+//                                                           //
+// This file contains all testcases for the                  //
+// Warehouse::pickItems methode.                             //
+//                                                           //
+///////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////
+//                Functions used in testcases                //
+///////////////////////////////////////////////////////////////
+
 /// \brief 
 /// Creates a mock Warehouse.
 /// \return Warehouse with shelf of books.
@@ -10,11 +26,6 @@
 /// Creates a Warehouse with 3 unsorted shelves with a total of 100 Books, 60 Boxes, and 60 Toy Bears.
 /// \n Adds forklift certified employee Bob.
 /// \n This function can be used in testcases to avoid the repeated construction of Warehouse objects.
-
-///////////////////////////////////////////////////////////////
-//           Warehouse::pickItems test cases                 //
-///////////////////////////////////////////////////////////////
-
 Warehouse createMockWarehouse2(){
     Warehouse warehouse = Warehouse();
     Shelf shelf1 = Shelf();
@@ -50,7 +61,11 @@ Warehouse createMockWarehouse2(){
     return warehouse;
 }
 
-TEST_CASE("Pick items with succes single pallet", "Warehouse::pickItems"){
+///////////////////////////////////////////////////////////////
+//            Warehouse::pickItems test cases                //
+///////////////////////////////////////////////////////////////
+
+TEST_CASE("Pick items with success single pallet", "Warehouse::pickItems"){
     // Maak mock warehouse
     Warehouse warehouse = createMockWarehouse2();
 
@@ -126,7 +141,7 @@ TEST_CASE("Pick items with success multiple pallet and mutiple shelves", "Wareho
 }
 
 TEST_CASE("Pick items with fail, not enough items", "Warehouse::pickItems"){
-    // Construct empty warehouse and add empty shelf and forklift certified Employee.
+    // Construct empty warehouse
     Warehouse warehouse = createMockWarehouse2();
 
     bool successful = warehouse.pickItems("Books", 110);
@@ -150,7 +165,7 @@ TEST_CASE("Pick items with fail, not enough items", "Warehouse::pickItems"){
 }
 
 TEST_CASE("Pick items with fail, 0 items requested", "Warehouse::pickItems"){
-    // Construct empty warehouse and add empty shelf and forklift certified Employee.
+    // Construct empty warehouse
     Warehouse warehouse = createMockWarehouse2();
 
     bool successful = warehouse.pickItems("Books", 0);
@@ -174,7 +189,7 @@ TEST_CASE("Pick items with fail, 0 items requested", "Warehouse::pickItems"){
 }
 
 TEST_CASE("Pick items with fail, -1 items requested", "Warehouse::pickItems"){
-    // Construct empty warehouse and add empty shelf and forklift certified Employee.
+    // Construct empty warehouse
     Warehouse warehouse = createMockWarehouse2();
 
     bool successful = warehouse.pickItems("Books", -1);
@@ -198,7 +213,7 @@ TEST_CASE("Pick items with fail, -1 items requested", "Warehouse::pickItems"){
 }
 
 TEST_CASE("Pick items with fail, Non existent item", "Warehouse::pickItems"){
-    // Construct empty warehouse and add empty shelf and forklift certified Employee.
+    // Construct empty warehouse
     Warehouse warehouse = createMockWarehouse2();
 
     bool successful = warehouse.pickItems("Games", 20);
