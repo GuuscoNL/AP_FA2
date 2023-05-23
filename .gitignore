@@ -4,3 +4,6 @@
 *.d
 *.exe
 *desktop.ini*
+
+html/
+latex/
