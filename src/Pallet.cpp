@@ -53,11 +53,14 @@ bool Pallet::putOne() {
 	return true;
 }
 
-
 bool Pallet::isEmpty() {
-	return !(itemCount > 0);
+	return getRemainingSpace() == itemCapacity;
 }
 
 bool Pallet::isFull() {
-	return itemCount == itemCapacity;
+	return getRemainingSpace() == 0;
+}
+
+int Pallet::getRemainingSpace() {
+	return itemCapacity - itemCount;
 }

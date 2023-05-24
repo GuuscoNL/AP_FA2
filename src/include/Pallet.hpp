@@ -86,4 +86,11 @@ public:
 	 * @return `false`: Item was not added successfully, because the Pallet is full.
 	 */
 	bool putOne();
+
+	/**
+	 * @brief Get the remaining space.
+	 * 
+	 * @return int  The amount of space remaining.
+	 */
+	int getRemainingSpace();
 };
