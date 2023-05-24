@@ -34,7 +34,8 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
 
 bool Warehouse::pickItems(std::string itemName, int itemCount) {
 
-	if (itemCount <= 0){
+	// Check of itemCount valid is.
+	if (itemCount <= 0){ // 0 could be considered as valid too??? for now it is not.
 		return false;
 	}
 

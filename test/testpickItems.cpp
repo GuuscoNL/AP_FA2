@@ -115,7 +115,7 @@ TEST_CASE("Pick items with success multiple pallet", "Warehouse::pickItems") {
     REQUIRE(warehouse.shelves[2].pallets[3].getItemCount() == 30);
 }
 
-TEST_CASE("Pick items with success multiple pallet and mutiple shelves", "Warehouse::pickItems") {
+TEST_CASE("Pick items with success multiple pallet and multiple shelves", "Warehouse::pickItems") {
     // Construct empty warehouse.
     Warehouse warehouse = createMockWarehouse2();
 
