@@ -12,48 +12,52 @@ int Pallet::getItemCapacity() {
 	return this->itemCapacity;
 }
 
-Pallet::Pallet() {
-	itemName = "";
-	itemCapacity = 0;
-	itemCount = 0;
+Pallet::Pallet() :
+	itemName(""),
+	itemCapacity(0),
+	itemCount(0) {
 }
 
+
 Pallet::Pallet(std::string itemName, int itemCapacity, int itemCount) :
-	itemName(itemName), 
-	itemCapacity(itemCapacity), 
-	itemCount(itemCount)
-{}
+	itemName(itemName),
+	itemCapacity(itemCapacity),
+	itemCount(itemCount) {
+}
 
 bool Pallet::reallocateEmptyPallet(std::string itemName, int itemCapacity) {
-	if(!isEmpty()){
+	if (!isEmpty()) {
 		return false;
 	}
+
 	this->itemName = itemName;
 	this->itemCapacity = itemCapacity;
 	return true;
 }
 
 bool Pallet::takeOne() {
-	if(isEmpty()){
+	if (isEmpty()) {
 		return false;
 	}
+
 	itemCount -= 1;
 	return true;
 }
 
 bool Pallet::putOne() {
-	if(isFull()){
+	if (isFull()) {
 		return false;
 	}
+
 	itemCount += 1;
 	return true;
 }
 
 
-bool Pallet::isEmpty(){
+bool Pallet::isEmpty() {
 	return !(itemCount > 0);
 }
 
-bool Pallet::isFull(){
+bool Pallet::isFull() {
 	return itemCount == itemCapacity;
 }
