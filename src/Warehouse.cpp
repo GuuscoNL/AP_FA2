@@ -13,15 +13,15 @@ void Warehouse::addShelf(Shelf shelf) {
 
 bool Warehouse::rearrangeShelf(Shelf& shelf) {
 
-	// check of de employee een certificaat heeft en niet bezig is
+	// Check if the employee has a certificate and is not busy
 	for (auto employee : employees) {
 		if (!employee.getForkliftCertificate() || employee.getBusy()) {
 			return false;
 		}
 	}
 
-	// Bubble sort (Het aantal pallets is zo kort dat het 
-	// niet uitmaakt dat bubble sort langzaam is)
+	// Bubble sort (The number of pallets is so short that it 
+	// doesn't matter that bubble sort is slow)
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3 - i; j++) {
 			if (shelf.pallets[j].getItemCount() > shelf.pallets[j + 1].getItemCount()) {
@@ -38,32 +38,34 @@ bool Warehouse::pickItems(std::string itemName, int itemCount) {
 		return false;
 	}
 
-	// hoeveel items zijn er in deze warehouse?
-	int total_count = 0;
+	// How many items are there in this warehouse?
+	int total_item_count = 0;
 	for (auto shelf : shelves) {
 		for (auto pallet : shelf.pallets) {
 			if (pallet.getItemName() == itemName) {
-				total_count += pallet.getItemCount();
+				total_item_count += pallet.getItemCount();
 			}
 		}
 	}
 	// Check of er wel genoeg items zijn
-	if (total_count < itemCount) {
+	if (total_item_count < itemCount) {
 		return false;
 	}
 
 	int taken = 0;
 	for (auto &shelf : shelves) {
 		for (auto &pallet : shelf.pallets) {
-			if (pallet.getItemName() == itemName) {
-				while (taken < itemCount) {
-					bool took = pallet.takeOne();
-					if (took) {
-						taken += 1;
-					}
-					else {
-						break;
-					}
+			if (pallet.getItemName() != itemName) {
+				continue;
+			}
+
+			while (taken < itemCount) {
+				bool success = pallet.takeOne();
+				if (success) {
+					taken += 1;
+				}
+				else {
+					break;
 				}
 			}
 		}
